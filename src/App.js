@@ -1,10 +1,16 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="app">
-      <h1>Lets build slack</h1>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<h1>This is the homepage</h1>} exact>
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
