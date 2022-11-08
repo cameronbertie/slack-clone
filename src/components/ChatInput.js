@@ -3,7 +3,7 @@ import React, {  useState } from "react";
 import styled from "styled-components";
 import { db, collection, addDoc, serverTimestamp } from "../firebase";
 
-function ChatInput({ channelName, channelId }) {
+function ChatInput({ channelName, channelId, chatRef }) {
   const [input, setInput] = useState("");
 
 console.log(channelId);
@@ -20,6 +20,10 @@ console.log(channelId);
       timestamp: serverTimestamp(),
       user: 'Cameron Bertie',
       userImage: 'https://avatars.githubusercontent.com/u/72890283?v=4',
+    });
+
+    chatRef?.current?.scrollIntoView({
+      behavior: "smooth",
     });
 
     setInput('');
