@@ -6,8 +6,7 @@ import ChatInput from "./ChatInput";
 import { useSelector } from "react-redux";
 import { selectRoomId } from "../features/appSlice";
 import { useCollection, useDocument } from "react-firebase-hooks/firestore";
-import { collection, doc, orderBy, query } from "firebase/firestore";
-import { db } from "../firebase";
+import { collection, doc, db, orderBy, query } from "../firebase";
 import Message from "./Message";
 import { useEffect } from "react";
 

@@ -1,10 +1,12 @@
 import { Button } from "@mui/material";
 import React, {  useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import styled from "styled-components";
-import { db, collection, addDoc, serverTimestamp } from "../firebase";
+import { db, collection, addDoc, serverTimestamp, auth } from "../firebase";
 
 function ChatInput({ channelName, channelId, chatRef }) {
   const [input, setInput] = useState("");
+  const [user] = useAuthState(auth);
 
 console.log(channelId);
 
@@ -18,8 +20,8 @@ console.log(channelId);
     addDoc(collection(db, "rooms", channelId, "messages"), {
       message: input,
       timestamp: serverTimestamp(),
-      user: 'Cameron Bertie',
-      userImage: 'https://avatars.githubusercontent.com/u/72890283?v=4',
+      user: user.displayName,
+      userImage: user.photoURL,
     });
 
     chatRef?.current?.scrollIntoView({
